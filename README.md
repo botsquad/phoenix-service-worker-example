@@ -1,19 +1,18 @@
 # ServiceWorkerExample
 
-To start your Phoenix server:
+Example code accompanying the article [Implementing a caching service worker with Phoenix][1].
 
-  * Install dependencies with `mix deps.get`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+To try out the service worker, you need to run your Phoenix application in `prod` environment. Follow these steps:
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+```
+cd assets && npm run deploy
+mix phx.digest
+PORT=4000 MIX_ENV=prod mix phx.server
+```
 
-Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
-
-## Learn more
-
-  * Official website: http://www.phoenixframework.org/
-  * Guides: http://phoenixframework.org/docs/overview
-  * Docs: https://hexdocs.pm/phoenix
-  * Mailing list: http://groups.google.com/group/phoenix-talk
-  * Source: https://github.com/phoenixframework/phoenix
+Now you can visit [`localhost:4000`](http://localhost:4000) from your
+browser. Open the Service Worker section in the Application tab of the
+Chrome inspector, and notice that the service worker has been
+installed. The console should also show the message `Service Worker
+Registered`.  Tick the "offline" button and hit reload — your page
+still loads, hurray!
